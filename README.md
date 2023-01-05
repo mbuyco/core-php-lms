@@ -34,18 +34,18 @@ A simple learning management system using core PHP, HTML, CSS and JS.
 │   ├── progress_tracking.php
 │   ├── registration.php
 │   ├── repositories
-│   │   ├── IRepository.php
-│   │   └── UserRepository.php
+│   │   └── IRepository.php
 │   └── services
-│       └── SQLite3Driver.php
+│       ├── AbstractDBDriver.php
+│       ├── IDBDriver.php
+│       └── PostgresDriver.php
 ├── LICENSE
 ├── logout.php
 ├── public
 │   └── index.php
 ├── README.md
 ├── scripts
-│   ├── clean.php
-│   └── migrate.php
+│   └── clean.php
 └── tests
 ```
 
