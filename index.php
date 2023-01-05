@@ -1,25 +1,27 @@
 <?php
-require_once('lib/registration.php');
+require_once(__DIR__ . '/lib/registration.php');
 
-$page_title = $config['title'] ?: 'Hello World';
+$config = require_once(__DIR__ . '/lib/config.php');
 $registration_response = handle_registration();
 $html_errors = $registration_response['html_errors'];
 $post_data = $registration_response['post_data'];
+$success_message = $registration_response['success_message'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><?= $page_title; ?></title>
+  <title><?= $config['title']; ?></title>
 </head>
 <body>
   <header>
-    <h1><?= $page_title; ?></h1>
+    <h1>Simple LMS Login</h1>
   </header>
   <section class="content">
     <header>
       <h4>Login or Register</h4>
     </header>
+    <?= $success_message; ?>
     <?= $html_errors; ?>
     <form action="/" method="post">
       <div class="form-row">
