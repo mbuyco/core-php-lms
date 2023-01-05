@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/lib/config.php');
+require_once(__DIR__ . '/lib/core/config.php');
 require_once(__DIR__ . '/lib/login.php');
 $data = handle_login();
 ?>

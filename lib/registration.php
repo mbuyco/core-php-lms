@@ -1,8 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/constants.php');
+require_once(__DIR__ . '/core/constants.php');
 require_once(__DIR__ . '/repositories/UserRepository.php');
-require_once(__DIR__ . '/session.php');
+require_once(__DIR__ . '/core/session.php');
 
 function handle_registration(): array
 {

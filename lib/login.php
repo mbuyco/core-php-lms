@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/session.php');
+require_once(__DIR__ . '/core/session.php');
 
 function handle_login(): array
 {

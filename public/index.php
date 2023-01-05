@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../lib/registration.php');
 
-$config = require_once(__DIR__ . '/../lib/config.php');
+$config = require_once(__DIR__ . '/../lib/core/config.php');
 $registration_response = handle_registration();
 $html_errors = $registration_response['html_errors'];
 $post_data = $registration_response['post_data'];

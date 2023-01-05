@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/lib/session.php');
+require_once(__DIR__ . '/lib/core/session.php');
 
 $session_manager = new SessionManager();
 $session_manager->clear();
