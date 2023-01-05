@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:1.23-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/app
+      - ./docker/nginx:/etc/nginx/conf.d
+
+  app:
+    build: .
+    volumes:
+      - ./:/app
+
+
