@@ -24,10 +24,10 @@ A simple learning management system using core PHP, HTML, CSS and JS.
 └── tests
 ```
 
-**dashboard.php** - Dashboard page for authenticated users
-**index.php** - Main page
-**lib/registration.php** - A collection of functions for handling registration logic
-**tests/** - Contains unit tests
+- **dashboard.php** - Dashboard page for authenticated users
+- **index.php** - Main page
+- **lib/registration.php** - A collection of functions for handling registration logic
+- **tests/** - Contains unit tests
 
 ## Running locally
 
