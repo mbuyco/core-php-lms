@@ -1,5 +1,9 @@
 <?php
 
+require_once(__DIR__ . '/constants.php');
+require_once(__DIR__ . '/repositories/UserRepository.php');
+require_once(__DIR__ . '/session.php');
+
 function handle_registration(): array
 {
   if (!count($_POST))
@@ -27,14 +31,15 @@ function handle_registration(): array
     $password = $_POST['password'];
   }
 
-  // Gather error message
+  // Gather status messages
   $errors = [];
+  $success_message = '';
 
   if (!$username)
   {
     $errors['username'] = 'Username is required';
   }
-  else if (strlen($username) <= 4)
+  else if (strlen($username) < 4)
   {
     $errors['username'] = 'Username should at least have 4 characters';
   }
@@ -43,35 +48,46 @@ function handle_registration(): array
   {
     $errors['password'] = 'Password is required';
   }
-  else if (strlen($password) <= 4)
+  else if (strlen($password) < 4)
   {
     $errors['password'] = 'Password should at least have 4 characters';
   }
 
-  // Check if account exists
-  $data = mock_data();
-  $users_data = $data['users'];
-  $valid_user = NULL;
-
-  foreach ($users_data as $user)
+  // Return errors if existing
+  if (count($errors))
   {
-    if (
-      $user['username'] == $username &&
-      $user['password'] == $password
-    ) {
-      $valid_user = $user;
-      break;
-    }
+    return [
+      'html_errors' => html_errors($errors),
+      'post_data' => $_POST,
+      'success_message' => $success_message,
+    ];
   }
 
-  // Show error if user does not exist
-  // If user exists, redirect to dashboard page
-  if ($valid_user == NULL)
+  // Access user repository
+  $user_repository = new UserRepository();
+
+  // Check if account exists
+  $check_user = $user_repository->get_where([
+    'username' => $username,
+    'password' => $password,
+  ]);
+
+  // Register if user does not exist
+  // If user exists, redirect to login.php
+  if ($check_user == NULL)
   {
-    $errors[] = 'Username/password is invalid';
+    $user_repository->insert([
+      'username' => $username,
+      'password' => $password,
+    ]);
+    $success_message = '<div class="success"><p>Registration successful</p></div>';
+    unset($_POST);
   }
   else
   {
+    $session_manager = new SessionManager();
+    $session_manager->set('username', $username);
+    $session_manager->set('password', $password);
     header('Location: dashboard.php');
     exit();
   }
@@ -80,6 +96,7 @@ function handle_registration(): array
   return [
     'html_errors' => html_errors($errors),
     'post_data' => $_POST,
+    'success_message' => $success_message,
   ];
 }
 
@@ -100,16 +117,4 @@ function html_errors(array $errors): string
   $html .= '</div>';
 
   return $html;
-}
-
-function mock_data()
-{
-  return [
-    'users' => [
-      [
-        'username' => 'mrbuyco',
-        'password' => 'pw123',
-      ],
-    ],
-  ];
 }
