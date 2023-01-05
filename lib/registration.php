@@ -14,6 +14,7 @@ function handle_registration(): array
         'username' => '',
         'password' => '',
       ],
+      'success_message' => '',
     ];
   }
 
