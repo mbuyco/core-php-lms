@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/AbstractDBDriver.php');
 
-class PostgresDriver extends AbstractDBDriver
+class PostgresDBDriver extends AbstractDBDriver
 {
     public function connect(): void
     {
