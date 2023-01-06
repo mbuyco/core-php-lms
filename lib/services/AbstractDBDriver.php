@@ -25,13 +25,26 @@ abstract class AbstractDBDriver implements IDBDriver
 
   abstract public function connect(): void;
 
-  public function exec(string $query): int|false
+  public function exec(string $query, array $params = []): int|false
   {
-    return $this->pdo->exec($query);
+    $stmt = $this->prepare($query, $params);
+    return $stmt->rowCount();
   }
 
-  public function query(string $query): PDOStatement|false
-  {
-    return $this->pdo->query($query);
+  public function query(
+    string $query,
+    array $params = [],
+  ): array {
+    $stmt = $this->prepare($query, $params);
+    return $stmt->fetchAll($query);
+  }
+
+  public function prepare(
+    string $query,
+    array $params = [],
+  ): PDOStatement|false {
+    $stmt = $this->pdo->prepare($query);
+    $stmt->execute($params);
+    return $stmt;
   }
 }

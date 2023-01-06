@@ -2,7 +2,7 @@
 
 interface IRepository
 {
-  public function delete(): void;
+  public function delete_by_id(int $id): void;
   public function get_by_id(int $id);
   public function get_where(array $where);
   public function insert(array $data): void;
