@@ -1,0 +1,11 @@
+{
+    "name": "mbuyco/core-php-lms",
+    "description": "A simple learning management system using core PHP.",
+    "license": "GPL-3.0-only",
+    "autoload": {
+        "psr-4": {
+            "CorePhpLms\\": "src/"
+        }
+    },
+    "require": {}
+}
