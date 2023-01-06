@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/IRepository.php');
+
 class BaseRepository implements IRepository
 {
   protected AbstractDBDriver $db;
