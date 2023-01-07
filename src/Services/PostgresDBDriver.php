@@ -1,6 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/AbstractDBDriver.php');
+namespace CorePhpLms\Services;
+
+use PDO;
 
 class PostgresDBDriver extends AbstractDBDriver
 {

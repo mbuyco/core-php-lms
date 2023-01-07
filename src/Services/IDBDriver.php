@@ -1,5 +1,9 @@
 <?php
 
+namespace CorePhpLms\Services;
+
+use PDOStatement;
+
 interface IDBDriver
 {
     public function connect(): void;

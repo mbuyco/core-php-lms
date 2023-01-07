@@ -1,6 +1,9 @@
 <?php
 
-require_once(__DIR__ . '/IDBDriver.php');
+namespace CorePhpLms\Services;
+
+use PDO;
+use PDOStatement;
 
 abstract class AbstractDBDriver implements IDBDriver
 {
