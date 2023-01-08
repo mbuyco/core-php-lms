@@ -39,7 +39,7 @@ abstract class AbstractDBDriver implements IDBDriver
         array $params = [],
     ): array {
         $stmt = $this->prepare($query, $params);
-        return $stmt->fetchAll($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function prepare(
