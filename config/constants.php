@@ -15,3 +15,6 @@ define('DEFAULT_PAGE_TITLE', 'Simple LMS');
 define('USER_TYPE_ADMIN', 1);
 define('USER_TYPE_TEACHER', 2);
 define('USER_TYPE_STUDENT', 3);
+
+// Repository configuration
+define('DEFAULT_LIST_LIMIT', 10);

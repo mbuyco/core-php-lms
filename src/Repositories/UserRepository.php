@@ -1,8 +1,14 @@
 <?php
 
-require_once(__DIR__ . '/BaseRepository.php');
+namespace CorePhpLms\Repositories;
 
-class UserRepository extends BaseRepository
+class UserRepository
 {
+    protected ISQLRepository $sql;
     protected string $table_name = 'users';
+
+    public function __construct(ISQLRepository $sql)
+    {
+        $this->sql = $sql;
+    }
 }

@@ -10,7 +10,7 @@ class RouteDispatcher implements IRouteDispatcher
     public function dispatch(
         string $method,
         string $uri,
-        array $params,
+        array $params = [],
     ): void {
         $route = Router::get_route($uri) ?? null;
 

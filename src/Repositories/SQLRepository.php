@@ -1,8 +1,10 @@
 <?php
 
-require_once(__DIR__ . '/IRepository.php');
+namespace CorePhpLms\Repositories;
 
-class BaseRepository implements IRepository
+use CorePhpLms\Services\AbstractDBDriver;
+
+final class SQLRepository implements ISQLRepository
 {
     protected AbstractDBDriver $db;
     protected string $table_name;
@@ -46,8 +48,10 @@ class BaseRepository implements IRepository
         $this->db->exec($query, array_values($data));
     }
 
-    public function list(): array
-    {
+    public function list(
+        int $limit = DEFAULT_LIST_LIMIT,
+        int $offset = 0,
+    ): array {
         return $this->db->query("SELECT * FROM `{$this->table_name}`");
     }
 
