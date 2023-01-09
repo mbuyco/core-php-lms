@@ -2,8 +2,10 @@
 
 namespace CorePhpLms\Lib;
 
-final class View extends Singleton
+final class View
 {
+    use SingletonTrait;
+
     public static function render(string $view_path, array $data = []): void
     {
         extract(self::setup_data($data));

@@ -4,8 +4,10 @@ namespace CorePhpLms\Lib;
 
 use BadMethodCallException;
 
-final class Router extends Singleton
+final class Router
 {
+    use SingletonTrait;
+
     private static array $methods = [
         'delete',
         'get',
