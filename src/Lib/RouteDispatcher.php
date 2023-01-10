@@ -34,10 +34,10 @@ class RouteDispatcher implements IRouteDispatcher
             ));
         }
 
-        $this->_handle_controller($controller_name, $method, $params);
+        $this->_handle_dispatch($controller_name, $method, $params);
     }
 
-    private function _handle_controller(
+    private function _handle_dispatch(
         string|callable $controller,
         string $method,
         array $params,

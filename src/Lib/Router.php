@@ -37,11 +37,26 @@ final class Router
         self::_add_route($method_name, $uri, $controller);
     }
 
-    public static function get_route(string $route_name)
+    public static function get_route(string $route_name): array
     {
         if (array_key_exists($route_name, self::$routes)) {
             return self::$routes[$route_name];
         }
+    }
+
+    public static function get_request_data(string $method): array
+    {
+        $data = [];
+
+        if ($method === 'POST') {
+            $data = $_POST ?? [];
+        }
+
+        if ($method === 'GET') {
+            $data = $_GET ?? [];
+        }
+
+        return $data;
     }
 
     private static function _add_route(
