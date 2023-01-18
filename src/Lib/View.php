@@ -6,10 +6,17 @@ final class View
 {
     use SingletonTrait;
 
-    public static function render(string $view_path, array $data = []): void
-    {
+    const VIEWS_PATH = __DIR__ . '/../../views/';
+    const VIEWS_LAYOUT_PATH = self::VIEWS_PATH . 'layouts/';
+
+    public static function render(
+        string $path,
+        array $data = [],
+        string $layout = 'public',
+    ): void {
+        $data['content'] = self::VIEWS_PATH . $path . '.php';
         extract(self::setup_data($data));
-        include(__DIR__ . '/../../views/' . $view_path . '.php');
+        include(self::VIEWS_LAYOUT_PATH . $layout . '.php');
     }
 
     protected static function setup_data(array $data): array
